@@ -4,7 +4,7 @@ export function Counter() {
   const [count, setCount] = useState(0);
 
   const increment = () => { 
-    if (count < 9) {
+    if (count < 10) {
     setCount(count + 1);
     }
   };
@@ -19,7 +19,7 @@ export function Counter() {
     <div>
       <h1>Counter</h1>
       <p>Current Count: {count}</p>
-      <button className='btn btn-primary' onClick={increment} disabled={count >= 9}>Increment</button>
+      <button className='btn btn-primary' onClick={increment} disabled={count >= 10}>Increment</button>
       <button className='btn btn-primary' onClick={decrement} disabled={count <= 0}>Decrement</button>
     </div>
   );
