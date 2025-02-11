@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Signup</title>
+
+</head>
+<body>
+  <div class="container">
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="#">
+        <input type="text" class="item_required_h" id="user_email" name="user_email">
+        <label id="error1_email" style="color: red;"></label>
+        <input type="password" class="item_required_h" id="psw" name="psw"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+        <input type="password" class="item_required_h" id="conf_psw" name="conf_psw">
+        <label id="match_psw" style="color: red;"></label>
+        <input type="button" class="button" value="Signup">
+      </form>
+
+    </div>
+  </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+  $(document).on('change', '#country_id', function()
+        {
+            var country_id = $(this).find('option:selected').attr('data-county-id');
+            if(country_id)
+            {
+                $.ajax({
+                    url:'/state_val/',
+                    data:{country_id:country_id},
+                    datatype:"text",
+                    success:function(data)
+                    {
+                        $("#states_id").html("");
+
+                        var html = '';
+                        html += '<option value="">None</option>';
+
+                        $.each(data.data,function(index,item){
+
+                            html += '<option value="'+item.id+'" data-stt-id="'+item.id+'">'+item.name+'</option>';
+
+                        });
+
+                        $('#states_id').append(html);
+                    },
+                });
+            }
+            else{
+                $("#states_id").html("");
+                var html = '';
+                html += '<option value="">None</option>';
+                $('#states_id').append(html);
+            }
+        });
+        
+$(document).on('change', '#states_id', function()
+        {
+            var states_id = $(this).find('option:selected').attr('data-stt-id');
+            
+            if(states_id)
+            {
+                $.ajax({
+                    url:'n/cities_val/',
+                    data:{states_id:states_id},
+                    datatype:"text",
+                    success:function(data)
+                    {
+                        $("#cties_id").html("");
+
+                        var html = '';
+                        html += '<option value="">None</option>';
+
+                        $.each(data.data,function(index,item){
+
+                            html += '<option value="'+item.id+'">'+item.name+'</option>';
+
+                        });
+
+                        $('#cties_id').append(html);
+                    },
+                });
+            }
+            else{
+                $("#cties_id").html("");
+                var html = '';
+                html += '<option value="">None</option>';
+                $('#cties_id').append(html);
+            }
+        });
+        
+        
+        
+  
+  function match_conf_psw()
+ {
+     var psw = $("#psw").val();
+     var conf_psw = $("#conf_psw").val();
+     if(psw != conf_psw){
+      $("#match_psw").text(" Password is not a valid");
+		   conf_psw.focus;
+     }else{
+        $("#match_psw").text("");
+        $('#match_psw').removeAttr('style');
+     }
+ }
+  
+  function checkemail()
+ {
+     var email = $("#user_email").val();
+     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+     if (!filter.test(email)) {
+       	if(email=='')
+       	{
+		   $("#error1_email").text('');
+		   $('#user_email').css('border-color', 'red');
+
+		}else
+		 {
+		   $("#error1_email").text(email+" is not a valid email");
+		   email.focus;
+		  }
+    } else {
+        $("#error1_email").text("");
+        $('#user_email').removeAttr('style');
+    }
+ }
+
+ function checkemail1()
+ {
+     var email = $("#user_email").val();
+     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+     if (!filter.test(email)) {
+       	if(email=='')
+       	{
+		   $("#error1_email").text('');
+		   $('#user_email').css('border-color', 'red');
+		}else
+		 {
+		 	$("#user_email").val('');
+		 	$('#user_email').css('border-color', 'red');
+		   $("#error1_email").text('');
+		   email.focus;
+		  }
+    } else {
+        $("#error1_email").text("");
+         $('#user_email').removeAttr('style');
+    }
+ }
+
+  
+</script>
+</body>
+</html>
