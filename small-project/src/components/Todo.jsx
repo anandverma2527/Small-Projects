@@ -22,17 +22,17 @@ export function Todo() {
       <h1>To-Do List</h1>
       <div style={{ marginBottom: '10px' }}>
         <input
-          type="text"
+          type="text" className='form-control'
           value={task}
           onChange={(e) => setTask(e.target.value)}
           placeholder="Enter a new task"
         />
-        <button onClick={handleAddTask}>Add Task</button>
+        <button className='btn btn-primary' onClick={handleAddTask}>Add Task</button>
       </div>
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>
-            {task} <button onClick={() => handleRemoveTask(index)}>Remove</button>
+            {task} <button className='btn btn-primary' onClick={() => handleRemoveTask(index)}>Remove</button>
           </li>
         ))}
       </ul>

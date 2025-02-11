@@ -19,8 +19,8 @@ export function Counter() {
     <div>
       <h1>Counter</h1>
       <p>Current Count: {count}</p>
-      <button onClick={increment} disabled={count >= 9}>Increment</button>
-      <button onClick={decrement} disabled={count <= 0}>Decrement</button>
+      <button className='btn btn-primary' onClick={increment} disabled={count >= 9}>Increment</button>
+      <button className='btn btn-primary' onClick={decrement} disabled={count <= 0}>Decrement</button>
     </div>
   );
 }
