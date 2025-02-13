@@ -1,12 +1,15 @@
 import React from 'react';
-import { Form } from './components/Form'
+import { Navbar } from './components/Navbar';
+import { Login } from './components/form/Login'
 import { Todo } from './components/Todo'
 import { Counter } from './components/Counter'
+
 
  function App() {
   return (
     <> 
-      <Form />
+      <Navbar/>
+      <Login />
       <Todo/>
       <Counter />
     </>
