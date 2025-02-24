@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 export function Login() {
   const [formData, setFormData] = useState({
     username: '',
@@ -99,7 +99,7 @@ export function Login() {
                     />
                   </div>
                   <div className="mb-3 text-end">
-                    <a href="#">Forgot password?</a>
+                  <Link to="/forgot-password">Forgot password?</Link>
                   </div>
                   <button type="submit" className="btn btn-info btn-block w-100 rounded-pill text-white">
                     LOG ME IN
