@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // for navigation if needed
 
 export function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -50,14 +51,14 @@ export function ForgotPassword() {
   };
 
   return (
-    <div className="container">
-      <div className="registration form">
-        <h1>Forgot Password</h1>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="card p-4" style={{ width: '100%', maxWidth: '400px' }}>
+        <h2 className="text-center mb-4">Forgot Password</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="email"
-              className="item_required_h"
+              className="form-control"
               id="user_email"
               name="user_email"
               value={email}
@@ -65,13 +66,13 @@ export function ForgotPassword() {
               placeholder="Enter your email"
               required
             />
-            <label id="error1_email" style={{ color: 'red' }}>{errors.email}</label>
+            {errors.email && <div className="text-danger">{errors.email}</div>}
           </div>
 
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="password"
-              className="item_required_h"
+              className="form-control"
               id="psw"
               name="psw"
               value={password}
@@ -80,13 +81,13 @@ export function ForgotPassword() {
               required
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
             />
-            <label style={{ color: 'red' }}>{errors.password}</label>
+            {errors.password && <div className="text-danger">{errors.password}</div>}
           </div>
 
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="password"
-              className="item_required_h"
+              className="form-control"
               id="conf_psw"
               name="conf_psw"
               value={confirmPassword}
@@ -94,17 +95,16 @@ export function ForgotPassword() {
               placeholder="Confirm Password"
               required
             />
-            <label id="match_psw" style={{ color: 'red' }}>{errors.confirmPassword}</label>
+            {errors.confirmPassword && <div className="text-danger">{errors.confirmPassword}</div>}
           </div>
 
-          <button type="submit" className="button">Reset Password</button>
+          <button type="submit" className="btn btn-primary w-100">Reset Password</button>
+
+          <div className="mt-3 text-center">
+            <Link to="/" className="btn btn-link">Back to Login</Link>
+          </div>
         </form>
       </div>
     </div>
   );
 }
-
-
-
-
-
