@@ -1,0 +1,34 @@
+
+  /* Card styling */
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Card Title */
+  .card-title {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  /* Task List Items */
+  .list-group-item {
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Remove the default button padding for better alignment */
+  .btn {
+    padding: 10px 15px;
+  }
+  
+  /* Responsiveness for smaller screens */
+  @media (max-width: 600px) {
+    .d-flex {
+      flex-direction: column;
+    }
+    .form-control {
+      margin-bottom: 10px;
+    }
+  }
+  
